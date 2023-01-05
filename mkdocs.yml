@@ -123,3 +123,8 @@ extra_css:
 nav:
   - Home: index.md
   - About me: about.md
+  - Notes:
+    - C++:
+      - Multithreading & Concurrency in C++: cpp/concurrency.md
+    # - Robotics:
+    # - Controllers:
