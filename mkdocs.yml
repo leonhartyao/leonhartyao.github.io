@@ -74,6 +74,8 @@ extra:
 # Plugins
 plugins:
   - search
+  - tags:
+      tags_file: index.md
 
 # Extensions
 markdown_extensions:
