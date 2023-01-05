@@ -1,0 +1,13 @@
+# Editor
+.vscode/
+.idea/
+
+# mkdocs files
+site/
+.cache/
+
+# python files
+__pycache__
+
+# iml
+mkdocs_pages.iml
