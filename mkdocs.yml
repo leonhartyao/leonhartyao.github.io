@@ -64,9 +64,9 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/chaolmu
-    # - icon: fontawesome/brands/twitter
-    #   link: https://twitter.com/krahets
+      link: https://github.com/leonhartyao
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/dr-ing-chao-y-88032bba/
     # - icon: fontawesome/solid/code
     #   link: https://leetcode.cn/u/jyd/
   generator: false
@@ -125,8 +125,10 @@ extra_css:
 nav:
   - Home: index.md
   - About me: about.md
-  - Notes:
+  - Blogs:
     - C++:
       - Multithreading & Concurrency in C++: cpp/concurrency.md
     # - Robotics:
     # - Controllers:
+  - TIL: til.md
+  - Projects: projects.md
