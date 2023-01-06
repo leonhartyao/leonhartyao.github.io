@@ -63,12 +63,12 @@ theme:
 
 extra:
   social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/leonhartyao
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/dr-ing-chao-y-88032bba/
-    # - icon: fontawesome/solid/code
-    #   link: https://leetcode.cn/u/jyd/
+    - icon: fontawesome/brands/github
+      link: https://github.com/leonhartyao
+    - icon: fontawesome/brands/orcid
+      link: https://orcid.org/0000-0001-8599-112X
   generator: false
 
 # Plugins
@@ -93,9 +93,9 @@ markdown_extensions:
       smart_enable: all
   - pymdownx.caret
   - pymdownx.details
-  # - pymdownx.emoji:
-  #     emoji_index: !!python/name:materialx.emoji.twemoji
-  #     emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
