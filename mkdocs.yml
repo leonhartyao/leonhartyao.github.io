@@ -4,8 +4,8 @@ site_url: https://www.hello-algo.com/
 site_author: Chao Yao
 site_description: "Personal tech blog"
 # Repository
-repo_name: chaolmu/mkdocs_pages
-repo_url: https://github.com/chaolmu/mkdocs_pages
+# repo_name: chaolmu/mkdocs_pages
+# repo_url: https://github.com/chaolmu/mkdocs_pages
 
 # Copyright
 copyright: Copyright &copy; 2023 Chao Yao
@@ -13,6 +13,7 @@ copyright: Copyright &copy; 2023 Chao Yao
 # Configuration
 theme:
   name: material
+  custom_dir: overrides
   language: en
   features:
     # - announce.dismiss
@@ -25,12 +26,12 @@ theme:
     # - header.autohide
     # - navigation.expand
     - navigation.indexes
-    # - navigation.instant
+    - navigation.instant
     # - navigation.prune
     - navigation.sections
     # - navigation.tabs
     # - navigation.tabs.sticky
-    # - navigation.top
+    - navigation.top
     - navigation.footer
     - navigation.tracking
     - search.highlight
@@ -40,28 +41,36 @@ theme:
     # - toc.integrate
   palette:
     - scheme: default
-      primary: white
-      # accent: indigo
+      primary: deep purple
+      accent: deep purple
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
     - scheme: slate
-      # primary: grey
-      # accent: indigo
+      primary: deep purple
+      accent: deep purple
       toggle:
         icon: material/weather-night
         name: Switch to light mode
   font:
-    text: Noto Sans SC
-    code: Fira Code
+    # text: Noto Sans SC
+    text: Noto Sans
+    code: Roboto Mono
   favicon: assets/images/favicon.png
   # logo: assets/images/logo.png
   icon:
-    logo: logo
+    logo: material/library
     repo: fontawesome/brands/github
     edit: material/file-edit-outline
 
 extra:
+  # alternate:
+  #   - name: EN
+  #     link: /en/
+  #     lang: en
+  #   - name: DE
+  #     link: /de/
+  #     lang: de
   social:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/dr-ing-chao-y-88032bba/
@@ -74,8 +83,12 @@ extra:
 # Plugins
 plugins:
   - search
+  # - git-revision-date-localized:
+  #     type: date
   - tags:
       tags_file: index.md
+  - minify:
+      minify_html: true
 
 # Extensions
 markdown_extensions:
