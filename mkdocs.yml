@@ -1,11 +1,11 @@
 # Project information
 site_name: Dr.-Ing. Chao Yao 『 姚超 』
-site_url: https://www.hello-algo.com/
+site_url: https://leonhartyao.github.io/
 site_author: Chao Yao
-site_description: "Personal tech blog"
+site_description: "Personal site with notes related to control and robotic systems."
 # Repository
-repo_name: chaolmu/mkdocs_pages
-repo_url: https://github.com/chaolmu/mkdocs_pages
+# repo_name: chaolmu/mkdocs_pages
+# repo_url: https://github.com/chaolmu/mkdocs_pages
 
 # Copyright
 copyright: Copyright &copy; 2023 Chao Yao
@@ -13,6 +13,7 @@ copyright: Copyright &copy; 2023 Chao Yao
 # Configuration
 theme:
   name: material
+  custom_dir: overrides
   language: en
   features:
     # - announce.dismiss
@@ -30,7 +31,7 @@ theme:
     - navigation.sections
     # - navigation.tabs
     # - navigation.tabs.sticky
-    # - navigation.top
+    - navigation.top
     - navigation.footer
     - navigation.tracking
     - search.highlight
@@ -40,28 +41,36 @@ theme:
     # - toc.integrate
   palette:
     - scheme: default
-      primary: white
-      # accent: indigo
+      primary: deep purple
+      accent: deep purple
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
     - scheme: slate
-      # primary: grey
-      # accent: indigo
+      primary: deep purple
+      accent: deep purple
       toggle:
         icon: material/weather-night
         name: Switch to light mode
   font:
-    text: Noto Sans SC
-    code: Fira Code
-  favicon: assets/images/favicon.png
-  # logo: assets/images/logo.png
+    # text: Noto Sans SC
+    text: Noto Sans
+    code: Roboto Mono
+  favicon: assets/robot.svg
+  logo: assets/logo.png
   icon:
-    logo: logo
+    logo: material/library
     repo: fontawesome/brands/github
     edit: material/file-edit-outline
 
 extra:
+  # alternate:
+  #   - name: EN
+  #     link: /en/
+  #     lang: en
+  #   - name: DE
+  #     link: /de/
+  #     lang: de
   social:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/dr-ing-chao-y-88032bba/
@@ -74,8 +83,20 @@ extra:
 # Plugins
 plugins:
   - search
+  # - git-revision-date-localized:
+  #     type: date
   - tags:
-      tags_file: index.md
+      tags_file: tag.md
+  - minify:
+      minify_html: true
+  - blogging:
+      dirs: # The directories to be included
+        - blog
+      categories:
+        - name: TIL
+          dirs:
+            - til
+  - glightbox
 
 # Extensions
 markdown_extensions:
@@ -115,20 +136,21 @@ markdown_extensions:
   - pymdownx.tilde
 
 extra_javascript:
-  - javascripts/mathjax.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-extra_css:
-  - stylesheets/extra.css
+# extra_css:
+  # - stylesheets/extra.css
 
 # Page tree
 nav:
   - Home: index.md
   - About me: about.md
-  - Blogs:
-    - C++:
-      - Multithreading & Concurrency in C++: cpp/concurrency.md
+  - Blogs: blog.md
+  #   - C++:
+  #     - Multithreading & Concurrency in C++: cpp/concurrency.md
     # - Robotics:
     # - Controllers:
   - TIL: til.md
+  - Tags: tag.md
   - Projects: projects.md
