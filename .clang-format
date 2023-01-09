@@ -1,0 +1,55 @@
+# .clang-format file for BCR2 project
+#
+# Reference can be created with "clang-format-12 -style=google -dump-config > .clang-format-google"
+---
+Language: Cpp
+BasedOnStyle: Google
+AccessModifierOffset: -2
+AlignAfterOpenBracket: false
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignEscapedNewlinesLeft: true
+AlignOperands: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakTemplateDeclarations: true
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: true
+  AfterControlStatement: false
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterObjCDeclaration: true
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: true
+  BeforeElse: false
+  IndentBraces: false
+BreakBeforeBraces: Custom
+ColumnLimit: 140
+ConstructorInitializerIndentWidth: 0
+ContinuationIndentWidth: 2
+DerivePointerAlignment: false
+IndentWidth: 2
+PointerAlignment: Left
+ReflowComments: true
+SortIncludes: false
+SpaceAfterTemplateKeyword: false
+TabWidth: 2
+UseTab: Never
+
+# the following params are defaults from google, just for reference
+#AlignTrailingComments: true
+#AlwaysBreakAfterDefinitionReturnType: None
+#AlwaysBreakAfterReturnType: None
+#AlwaysBreakBeforeMultilineStrings: true
+#BinPackArguments: true
+#BinPackParameters: true
+#BreakBeforeBinaryOperators: None
+#BreakBeforeTernaryOperators: true
+#BreakConstructorInitializersBeforeComma: false
+#ConstructorInitializerAllOnOneLineOrOnePerLine: true
+#MaxEmptyLinesToKeep: 1
+#NamespaceIndentation: None

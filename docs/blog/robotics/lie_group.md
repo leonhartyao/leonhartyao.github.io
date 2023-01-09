@@ -2,8 +2,8 @@
 title: Lie Group for 3D Rigid Transformation
 description: Group theory necessary to describe any 3D rigid motion.
 comments: true
-tags:
-  - Robotics
+# tags:
+  # - Robotics
 exclude_from_blog: true
 ---
 

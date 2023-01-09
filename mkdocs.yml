@@ -106,6 +106,7 @@ markdown_extensions:
   - def_list
   - footnotes
   - md_in_html
+  - tables
   - toc:
       permalink: true
   - pymdownx.arithmatex:
@@ -140,7 +141,7 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 # extra_css:
-  # - stylesheets/extra.css
+#   - stylesheets/extra.css
 
 # Page tree
 nav:
@@ -149,8 +150,8 @@ nav:
   - Blogs: blog.md
   #   - C++:
   #     - Multithreading & Concurrency in C++: cpp/concurrency.md
-    # - Robotics:
-    # - Controllers:
+  # - Robotics:
+  # - Controllers:
   - TIL: til.md
   - Tags: tag.md
   - Projects: projects.md
