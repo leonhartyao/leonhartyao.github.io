@@ -1,0 +1,88 @@
+<mxfile host="65bd71144e">
+    <diagram id="xtA1a_p7q23QWDeRuTdz" name="Page-1">
+        <mxGraphModel dx="1018" dy="996" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="27" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="110" y="160" width="610" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="group;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" parent="27" vertex="1" connectable="0">
+                    <mxGeometry width="610" height="204" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#647687;strokeColor=none;fontColor=#ffffff;" parent="24" vertex="1">
+                    <mxGeometry y="-12" width="610" height="216" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="&lt;font face=&quot;Noto Sans&quot;&gt;CPU&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="24" vertex="1">
+                    <mxGeometry x="152.5" y="-12" width="305" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font face=&quot;Noto Sans&quot;&gt;L3&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" parent="27" vertex="1">
+                    <mxGeometry x="11.50943396226415" y="168" width="586.9811320754716" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="group" parent="27" vertex="1" connectable="0">
+                    <mxGeometry x="11.50943396226415" y="36" width="138.1132075471698" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=none;fontColor=#ffffff;" parent="7" vertex="1">
+                    <mxGeometry width="138.1132075471698" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;font face=&quot;Noto Sans&quot;&gt;Core 1&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="7" vertex="1">
+                    <mxGeometry x="34.52830188679245" width="69.0566037735849" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;font face=&quot;Noto Sans&quot;&gt;L1&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fillColor=#76608a;fontColor=#ffffff;strokeColor=none;" parent="7" vertex="1">
+                    <mxGeometry x="23.0188679245283" y="48" width="92.0754716981132" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;font face=&quot;Noto Sans&quot;&gt;L2&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fillColor=#fa6800;fontColor=#000000;strokeColor=none;" parent="7" vertex="1">
+                    <mxGeometry x="23.0188679245283" y="84" width="92.0754716981132" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="group" parent="27" vertex="1" connectable="0">
+                    <mxGeometry x="161.1320754716981" y="36" width="138.1132075471698" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=none;fontColor=#ffffff;" parent="8" vertex="1">
+                    <mxGeometry width="138.1132075471698" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;font face=&quot;Noto Sans&quot;&gt;Core 2&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="8" vertex="1">
+                    <mxGeometry x="34.52830188679245" width="69.0566037735849" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;font face=&quot;Noto Sans&quot;&gt;L1&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fillColor=#76608a;fontColor=#ffffff;strokeColor=none;" parent="8" vertex="1">
+                    <mxGeometry x="23.0188679245283" y="48" width="92.0754716981132" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;font face=&quot;Noto Sans&quot;&gt;L2&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fillColor=#fa6800;fontColor=#000000;strokeColor=none;" parent="8" vertex="1">
+                    <mxGeometry x="23.0188679245283" y="84" width="92.0754716981132" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="group" parent="27" vertex="1" connectable="0">
+                    <mxGeometry x="310.7547169811321" y="36" width="138.1132075471698" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=none;fontColor=#ffffff;" parent="13" vertex="1">
+                    <mxGeometry width="138.1132075471698" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;font face=&quot;Noto Sans&quot;&gt;Core 3&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="13" vertex="1">
+                    <mxGeometry x="34.52830188679245" width="69.0566037735849" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="&lt;font face=&quot;Noto Sans&quot;&gt;L1&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fillColor=#76608a;fontColor=#ffffff;strokeColor=none;" parent="13" vertex="1">
+                    <mxGeometry x="23.0188679245283" y="48" width="92.0754716981132" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="&lt;font face=&quot;Noto Sans&quot;&gt;L2&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fillColor=#fa6800;fontColor=#000000;strokeColor=none;" parent="13" vertex="1">
+                    <mxGeometry x="23.0188679245283" y="84" width="92.0754716981132" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="group" parent="27" vertex="1" connectable="0">
+                    <mxGeometry x="460.37735849056605" y="36" width="138.1132075471698" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6d8764;strokeColor=none;fontColor=#ffffff;" parent="18" vertex="1">
+                    <mxGeometry width="138.1132075471698" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="&lt;font face=&quot;Noto Sans&quot;&gt;Core 4&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="18" vertex="1">
+                    <mxGeometry x="34.52830188679245" width="69.0566037735849" height="36" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="&lt;font face=&quot;Noto Sans&quot;&gt;L1&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fillColor=#76608a;fontColor=#ffffff;strokeColor=none;" parent="18" vertex="1">
+                    <mxGeometry x="23.0188679245283" y="48" width="92.0754716981132" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="&lt;font face=&quot;Noto Sans&quot;&gt;L2&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fillColor=#fa6800;fontColor=#000000;strokeColor=none;" parent="18" vertex="1">
+                    <mxGeometry x="23.0188679245283" y="84" width="92.0754716981132" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&lt;font face=&quot;Noto Sans&quot;&gt;L3&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="27" vertex="1">
+                    <mxGeometry y="216" width="610" height="24" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
