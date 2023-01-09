@@ -13,12 +13,12 @@ public:
   }
   void addMoney(int money)
   {
-    std::lock_guard<std::mutex> lockGuard(exclusive);
+    int tmp = 0;
     for (auto i = 0; i < money; i++) {
-      // In case of exception, destructor of lock_guard will be called
-      mMoney++;
+      tmp++;
     }
-    // destructor of lock_guard will be called to unlock mutex
+    std::lock_guard<std::mutex> lockGuard(exclusive);
+    mMoney += tmp;
   }
 
 private:

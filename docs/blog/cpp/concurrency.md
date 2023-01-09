@@ -187,7 +187,7 @@ A **race condition** is a situation that may occur inside a critical section. Th
 The term race condition stems from the metaphor that the threads are racing through the critical section, and that the result of that race impacts the result of executing the critical section.
 Race conditions can be extremely difficult to debug simply because the bug itself depends on the timing of nondeterministic events. It is quite common that the bug cannot be recreated by testers, particularly if the problematic timing results from a rare circumstance.
 
-!!! danger Story
+!!! danger "Story"
     The Therac-25 radiation therapy machine is a classic and well-cited example of a race condition with deadly effects. The software for this machine included a one-byte counter. If the machine’s operator entered terminal input to the machine at the exact moment that the counter overflowed (quite common for a counter with only 256 possible values), a critical safety lock failed. This flaw made it possible for patients to receive approximately 100 times the intended radiation dose, which directly caused the deaths of three patients. [^1]
 
 Let's try the following example. Five threads are launched to add 1000 respectively to a shared account object. The initial amount is 0 and the expected amount is 5000 when all the threads are finished.
@@ -315,7 +315,6 @@ Other classes are extended with following features:
   - If one thread has acquired the exclusive lock (through `lock`, `try_lock`), no other threads can acquire the lock (including the shared).
   - If one thread has acquired the shared lock (through `lock_shared`, `try_lock_shared`), no other thread can acquire the exclusive lock, but can acquire the shared lock.
 
-
 In practice, high-level programming model is designed like this:
 
 - The resource (usually a class) that requires protection from data races owns a mutex object of the appropriate type.
@@ -366,7 +365,7 @@ public:
   }
   void addMoney(int money)
   {
-    std::lock_gard<std::mutex> lockGuard(exclusive)
+        std::lock_guard<std::mutex> lockGuard(exclusive);
     for (auto i = 0; i < money; i++) {
       // In case of exception, destructor of lock_guard will be called
       mMoney++;
@@ -381,21 +380,352 @@ private:
 ```
 
 If you compared the example using 5 threads with a serial version, it performs much worse than the single thread program.
-WHY?
 
-### Unique_lock
+!!! note "WHY?"
+    It is costly to add and unlock locks. The most time-consuming part of the computation here is inside the lock, which can only be executed by one thread at a time serially, compared to the single-threaded model, the example is not only serial, but also increases the burden of lock, and thus slower.
 
-### Recursive Mutexes
+The data we divide to each thread is actually independent and time consuming for data processing, but in fact this part of the logic can be handled separately by each thread and there is no need to add locks. Only one lock at the end when aggregating the data will be sufficient.
+To improve the performance, we modify the member function as
 
-### Shared_lock
+```cpp
+void addMoney(int money)
+{
+  int tmp =0;
+  for (auto i = 0; i < money; i++) {
+    tmp++;
+  }
+  std::lock_guard<std::mutex> lockGuard(exclusive);
+  mMoney += tmp;
+}
+```
+
+The for-loop is parallalized and the example outperforms the single thread version.
+We describe the scope of a lock in terms of its granularity. Fine-grained means that the lock protects a small range, and coarse-grained means that the lock protects a large range. For performance reasons, we should ensure that the lock is as fine-grained as possible. Also, time-consuming operations, such as IO, should not be performed within the scope of the lock, and if the computation is time-consuming, it should be moved outside the lock as much as possible.
+
+!!! quote
+    In general, a lock should be held for only the minimum possible time needed to perform the required operations.
+    –《C++ Concurrency in Action》
+
+### RAII Wrappers
+
+Besides `lock_guard`, the standard library provides RAII wrappers for locking and unlocking mutexes
+
+| API         | C++ version| Description                                   |
+| ----------  | ---------- | --------------------------------------------- |
+| lock_guard  | C++11      | own mutex for the duration of a scoped block. |
+| unique_lock | C++11      | RAII wrapper for exckusive locking            |
+| shared_lock | C++11      | RAII wrapper for shared locking               |
+| scoped_lock | C++11      | RAII wrapper for zero or more mutexes for the duration of a scoped block. |
+
+!!! tip
+    The RAII wrappers should always be preferred for locking and unlocking mutexes, since it makes bugs due to inconsistent locking/unlocking much more unlikely.
+
+The full name of RAII is _Resource Acquisition Is Initialization_.
+RAII is a C++ programming technique that ties the life cycle of resources that must be requested before they can be used (e.g., allocated heap memory, threads of execution, open sockets, open files, locked mutexes, disk space, database connections, etc.) to the life cycle of an object. RAII ensures that resources are available to any function that will access the object. It also ensures that all resources are released in reverse order of acquisition at the end of the lifetime of the object they control. Similarly, if the resource acquisition fails (the constructor exits with an exception), all resources acquired for the constructed object and base class subobjects are released in reverse order of initialization. This effectively eliminate memory leaks and ensure exception safety.
+
+<!-- !!! summary "RAII"
+    - Wrapping each resource into a class
+      - where the constructor requests the resource and establishes all class invariants or throws an exception if it fails to complete, and the destructor releases the resource and never throws an exception.
+      - The destructor releases resources and never throws an exception.
+    - Always use a resource via an instance of the RAII class that
+      - has its own automatic storage period or temporary lifetime, or
+      - has a lifetime bound to the lifetime of an automatic or temporary object -->
+
+#### Unique_lock
+
+`std::unique_lock` provides additional constructors
+
+- unique_lock(mutex_type& m, std::defer_lock_t t) – Do not immediately lock the mutex
+- unique_lock(mutex_type& m, std::try_to_lock_t t) – Do not block when the mutex cannot be locked
+
+std::unique_lock provides additional member functions
+
+- lock() – Manually lock the mutex
+- try_lock() – Try to lock the mutex, return true if successful
+- operator bool() – Check if the std::unique_lock holds a lock on the mutex
+
+```cpp
+#include <mutex>
+std::mutex mutex;
+void foo()
+{
+  std::unique_lock lock(mutex, std::try_to_lock);
+  if (!lock)
+  {
+    // do unsynchronized work here
+
+    lock.lock(); // block until we can get the lock
+  }
+
+  // do synchronized work here;
+
+  lock.unlock(); // release the lock early
+
+  // do unsynchronized work here
+}
+```
+
+The difference between `lock_guard` and `unique_lock` is that you can lock and unlock a `std::unique_lock`. `std::lock_guard` will be locked only once on construction and unlocked on destruction. `unique_lock` also provides the feature e.g., be constructed without locking the mutex immediately. `lock_guard` cannot lock multiple mutexes safely.
+!!! note
+    Since C++17, one should use `std::scoped_lock` instead of `std::lock_guard`.
+
+#### Shared_lock
+
+std::shared_lock can be used to lock a mutex in shared mode
+
+- Constructors and member functions analogous to std::unique_lock
+- Multiple threads can acquire a shared lock on the same mutex
+- Shared locking attempts block if the mutex is locked in exclusive mode
+- Only usable in conjunction with std::shared_mutex
+
+!!! note
+    Shared mutexes are mostly used to implement read/write-locks. Only read accesses are allowed when holding a shared lock while write accesses are only allowed when holding an exclusive lock.
+
+```cpp
+#include <shared_mutex>
+class SafeCounter
+{
+private:
+  mutable std::shared_mutex mutex;
+  size_t value = 0;
+  public:
+  size_t getValue() const
+  {
+    std::shared_lock lock(mutex);
+    return value; // read access
+  }
+
+  void incrementValue()
+  {
+    std::unique_lock lock(mutex);
+    ++value; // write access
+  }
+};
+```
+
+#### Scoped_lock
+
+`Scoped_lock` locks a mutex for its lifetime and unlocks it when it is destroyed. Also, it can lock multiple mutexes and avoid deadlocks.
+
+```cpp
+#include <chrono>
+#include <functional>
+#include <iostream>
+#include <mutex>
+#include <string>
+#include <thread>
+#include <vector>
+using namespace std::chrono_literals;
+
+struct Employee
+{
+  std::vector<std::string> lunch_partners;
+  std::string id;
+  std::mutex m;
+  Employee(std::string id) : id(id) {}
+  std::string partners() const
+  {
+    std::string ret = "Employee " + id + " has lunch partners: ";
+    for (const auto& partner : lunch_partners)
+      ret += partner + " ";
+    return ret;
+  }
+};
+
+void send_mail(Employee &, Employee &)
+{
+  // simulate a time-consuming messaging operation
+  std::this_thread::sleep_for(1s);
+}
+
+void assign_lunch_partner(Employee &e1, Employee &e2)
+{
+  static std::mutex io_mutex;
+  {
+    std::lock_guard<std::mutex> lk(io_mutex);
+    std::cout << e1.id << " and " << e2.id << " are waiting for locks" << std::endl;
+  }
+
+  {
+    // use std::scoped_lock to acquire two locks without worrying about
+    // other calls to assign_lunch_partner deadlocking us
+    // and it also provides a convenient RAII-style mechanism
+
+    std::scoped_lock lock(e1.m, e2.m);
+
+    // Equivalent code 1 (using std::lock and std::lock_guard)
+    // std::lock(e1.m, e2.m);
+    // std::lock_guard<std::mutex> lk1(e1.m, std::adopt_lock);
+    // std::lock_guard<std::mutex> lk2(e2.m, std::adopt_lock);
+
+    // Equivalent code 2 (if unique_locks are needed, e.g. for condition variables)
+    // std::unique_lock<std::mutex> lk1(e1.m, std::defer_lock);
+    // std::unique_lock<std::mutex> lk2(e2.m, std::defer_lock);
+    // std::lock(lk1, lk2);
+    {
+        std::lock_guard<std::mutex> lk(io_mutex);
+        std::cout << e1.id << " and " << e2.id << " got locks" << std::endl;
+    }
+    e1.lunch_partners.push_back(e2.id);
+    e2.lunch_partners.push_back(e1.id);
+  }
+
+  send_mail(e1, e2);
+  send_mail(e2, e1);
+}
+
+int main()
+{
+  Employee alice("Alice"), bob("Bob"), christina("Christina"), dave("Dave");
+
+  // assign in parallel threads because mailing users about lunch assignments
+  // takes a long time
+  std::vector<std::thread> threads;
+  threads.emplace_back(assign_lunch_partner, std::ref(alice), std::ref(bob));
+  threads.emplace_back(assign_lunch_partner, std::ref(christina), std::ref(bob));
+  threads.emplace_back(assign_lunch_partner, std::ref(christina), std::ref(alice));
+  threads.emplace_back(assign_lunch_partner, std::ref(dave), std::ref(bob));
+
+  for (auto &thread : threads)
+      thread.join();
+  std::cout << alice.partners() << '\n'  << bob.partners() << '\n'
+            << christina.partners() << '\n' << dave.partners() << '\n';
+}
+```
 
 ### Deadlocks
 
+The following example will lead to deadlocks：
+
+```cpp
+std::mutex m1, m2, m3;
+void threadA()
+{
+  // INTENTIONALLY BUGGY
+  std::unique_lock l1{m1}, l2{m2}, l3{m3};
+}
+void threadB()
+{
+  // INTENTIONALLY BUGGY
+  std::unique_lock l3{m3}, l2{m2}, l1{m1};
+}
+```
+
+Possible deadlock scenario:
+
+- threadA() acquires locks on m1 and m2
+- threadB() acquires lock on m3
+- threadA() waits for threadB() to release m3
+- threadB() waits for threadA() to release m2
+
+`std::scoped_lock` RAII wrapper can be used to safely lock any number of mutexes:
+
+```cpp
+std::mutex m1, m2, m3;
+void threadA()
+{
+  // OK, will not deadlock
+  std::scoped_lock l{m1, m2, m3};
+}
+void threadB()
+{
+  // OK, will not deadlock
+  std::scoped_lock l{m3, m2, m1};
+}
+```
+
 ### Condition Variables
 
-## Atomic Operations
+A condition variable is a synchronization primitive that allows multiple threads to wait until an (arbitrary) condition becomes true.
+
+- A condition variable uses a mutex to synchronize threads
+- Threads can wait on or notify the condition variable
+- When a thread waits on the condition variable, it blocks until another thread notifies it
+- If a thread waited on the condition variable and is notified, it holds the mutex
+- A notified thread must check the condition explicitly because spurious wake-ups can occur
+
+Class `std::condition_variable` in the header `<condition_variable>` has the following member functions:
+
+- **wait()**: Takes a reference to a std::unique_lock that must be locked by the caller as an argument, unlocks the mutex and waits for the condition
+variable
+- **notify_one()**: Notify a single waiting thread, mutex does not need to be held by the caller
+- **notify_all()**: Notify all waiting threads, mutex does not need to be held by the caller
+
+```cpp
+#include <iostream>
+#include <string>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+
+std::mutex m;
+std::condition_variable cv;
+std::string data;
+bool ready = false;
+bool processed = false;
+
+void worker_thread()
+{
+    // Wait until main() sends data
+    std::unique_lock lk(m);
+    cv.wait(lk, []{return ready;});
+
+    // after the wait, we own the lock.
+    std::cout << "Worker thread is processing data\n";
+    data += " after processing";
+
+    // Send data back to main()
+    processed = true;
+    std::cout << "Worker thread signals data processing completed\n";
+
+    // Manual unlocking is done before notifying, to avoid waking up
+    // the waiting thread only to block again (see notify_one for details)
+    lk.unlock();
+    cv.notify_one();
+}
+
+int main()
+{
+  std::thread worker(worker_thread);
+
+  data = "Example data";
+  // send data to the worker thread
+  {
+    std::lock_guard lk(m);
+    ready = true;
+    std::cout << "main() signals data ready for processing\n";
+  }
+  cv.notify_one();
+
+  // wait for the worker
+  {
+    std::unique_lock lk(m);
+    cv.wait(lk, []{return processed;});
+  }
+  std::cout << "Back in main(), data = " << data << '\n';
+
+  worker.join();
+}
+```
+
+Output:
+
+```plain
+main() signals data ready for processing
+Worker thread is processing data
+Worker thread signals data processing completed
+Back in main(), data = Example data after processing
+```
 
 ## Future
+
+| API           | C++ version| Description                                   |
+| ------------- | ---------- | --------------------------------------------- |
+| async         | C++11      | Run a function asynchronously and return a std::future with its result |
+| future        | C++11      | Provides a mechanism to access the result of asynchronous operations   |
+| packaged_task | C++11      | Wraps a function and store its return value for asynchronous fetching  |
+| promise       | C++11      | provides a facility to store a value or an exception that is later acquired asynchronously via a `future` object |
+| shared_future | C++11      | similar to std::future, except that multiple threads are allowed to wait for the same shared state. |
 
 ## Parallel STL
 
