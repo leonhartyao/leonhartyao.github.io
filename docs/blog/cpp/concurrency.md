@@ -133,12 +133,12 @@ if (th.joinable())
 
 ### Manage the Current Thread
 
-| API                        | C++ Version | Description                                                                             |
-|----------------------------|-------------|-----------------------------------------------------------------------------------------|
-| `this_thread::yield`       | C++11       | Let the operating system schedule another thread.                                       |
-| `this_thread::get_id`      | C++11       | Return current thread ID (OS specific)                                                  |
-| `this_thread::sleep_for`   | C++11       | Blocks the execution of the current thread for at least the specified sleep_duration.   |
-| `this_thread::sleep_until` | C++11       | Blocks the execution of the current thread until specified sleep_time has been reached. |
+| API         | C++ Version | Description                                                                             |
+|-------------|-------------|-----------------------------------------------------------------------------------------|
+| yield       | C++11       | suggests that the implementation reschedule execution of threads                        |
+| get_id      | C++11       | returns the thread id of the current thread (OS specific)                               |
+| sleep_for   | C++11       | blocks the execution of the current thread for at least the specified sleep_duration.   |
+| sleep_until | C++11       | blocks the execution of the current thread until specified sleep_time has been reached. |
 
 Each thread object has an associated ID `std::thread::id` which can be get by `std::thread::get_id()`. `std::this_thread::get_id()` returns the ID of the current thread. If a thread object has no associated thread, `get_id()` will return "not any thread"
 
@@ -410,12 +410,12 @@ We describe the scope of a lock in terms of its granularity. Fine-grained means 
 
 Besides `lock_guard`, the standard library provides RAII wrappers for locking and unlocking mutexes
 
-| API         | C++ version| Description                                   |
-| ----------  | ---------- | --------------------------------------------- |
-| lock_guard  | C++11      | own mutex for the duration of a scoped block. |
-| unique_lock | C++11      | RAII wrapper for exckusive locking            |
-| shared_lock | C++11      | RAII wrapper for shared locking               |
-| scoped_lock | C++11      | RAII wrapper for zero or more mutexes for the duration of a scoped block. |
+| API         | C++ version| Description                                               |
+| ----------  | ---------- | --------------------------------------------------------- |
+| lock_guard  | C++11      | implements a strictly scope-based mutex ownership wrapper |
+| unique_lock | C++11      | implements movable mutex ownership wrapper                |
+| shared_lock | C++11      | implements movable shared mutex ownership wrapper         |
+| scoped_lock | C++11      | deadlock-avoiding RAII wrapper for multiple mutexes       |
 
 !!! tip
     The RAII wrappers should always be preferred for locking and unlocking mutexes, since it makes bugs due to inconsistent locking/unlocking much more unlikely.
@@ -671,12 +671,12 @@ void worker_thread()
     cv.wait(lk, []{return ready;});
 
     // after the wait, we own the lock.
-    std::cout << "Worker thread is processing data\n";
+    std::cout << "Worker thread is processing data" << std::endl;
     data += " after processing";
 
     // Send data back to main()
     processed = true;
-    std::cout << "Worker thread signals data processing completed\n";
+    std::cout << "Worker thread signals data processing completed" << std::endl;
 
     // Manual unlocking is done before notifying, to avoid waking up
     // the waiting thread only to block again (see notify_one for details)
@@ -693,7 +693,7 @@ int main()
   {
     std::lock_guard lk(m);
     ready = true;
-    std::cout << "main() signals data ready for processing\n";
+    std::cout << "main() signals data ready for processing" << std::endl;
   }
   cv.notify_one();
 
@@ -702,7 +702,7 @@ int main()
     std::unique_lock lk(m);
     cv.wait(lk, []{return processed;});
   }
-  std::cout << "Back in main(), data = " << data << '\n';
+  std::cout << "Back in main(), data = " << data << std::endl;
 
   worker.join();
 }
@@ -719,13 +719,253 @@ Back in main(), data = Example data after processing
 
 ## Future
 
-| API           | C++ version| Description                                   |
-| ------------- | ---------- | --------------------------------------------- |
-| async         | C++11      | Run a function asynchronously and return a std::future with its result |
-| future        | C++11      | Provides a mechanism to access the result of asynchronous operations   |
-| packaged_task | C++11      | Wraps a function and store its return value for asynchronous fetching  |
-| promise       | C++11      | provides a facility to store a value or an exception that is later acquired asynchronously via a `future` object |
+The standard library provides facilities to obtain values that are returned and to catch exceptions that are thrown by asynchronous tasks (i.e. functions launched in separate threads). These values are communicated in a shared state, in which the asynchronous task may write its return value or store an exception, and which may be examined, waited for, and otherwise manipulated by other threads that hold instances of std::future or std::shared_future that reference that shared state.
+
+| API           | C++ version| Description                                                                                         |
+| ------------- | ---------- | --------------------------------------------------------------------------------------------------- |
+| async         | C++11      | Run a function asynchronously and return a std::future with its result                              |
+| future        | C++11      | waits for a value that is set asynchronously                                                        |
+| packaged_task | C++11      | packages a function to store its return value for asynchronous retrieval                            |
+| promise       | C++11      | stores a value for asynchronous retrieval                                                           |
 | shared_future | C++11      | similar to std::future, except that multiple threads are allowed to wait for the same shared state. |
+
+### promise and future
+
+!!! question
+    We often encounter situations where we need to get the result returned by a thread, how we can implement it?
+
+#### Share with Pointer
+
+We can pass a pointer to a new thread in which the result will be set. The main thread will wait via condition variables. The new thread then sets the result and notifies the condition variable, the main thread will get the result from that pointer.
+To implement this simple feature, we use a condition variable, a mutex lock, and a pointer to capture the return value.
+
+If we want the thread to return multiple different values at different points in time, the problem becomes more complex. Is there an easy way to get the return value from the thread?  
+The answer is to use std::future
+
+#### C++11 `promise` and `future`
+
+`std::future` is a class template whose objects store future values.
+In fact, a `std::future` object stores internally a value that will be assigned in the future, and provides a mechanism to access that value, implemented through the member function `get()`. But if someone tries to access the value through it before the `get()` function is available, then the it will block until that value is available.
+`std::promise` provides a facility to store a value or an exception that is later acquired asynchronously via a `std::future` object created by the `std::promise` object.
+
+Each `std::promise` object has a corresponding `std::future` object, through which others can get the value set by the `promise`.
+For instance,
+
+1. thread 1 creates a `std::promise` object and then get the `std::future` object from it.
+2. thread 1 passes it to thread 2.
+3. Thread 1 will get the value set by thread 2 through the `get()` of `std::future`.
+4. If thread 2 has not yet set the value, the `get()` call will block until thread 2 sets the value in the `promise` object.
+
+![promise future](assets/../../../assets/images/promise_future.svg)
+
+Here is a complete example of `std::future` and `std::promise`.
+
+```cpp
+#include <iostream>
+#include <thread>
+#include <future>
+#include <chrono>
+
+void doWork(std::promise<int> promiseObj)
+{
+  std::cout << "Inside new thread" << std::endl;
+  std::this_thread::sleep_for(std::chrono::seconds(5));
+  promiseObj.set_value(7);  // set value that can be accessed by future1
+}
+
+int main()
+{
+  std::promise<int> promise1;
+  std::future<int> future1 = promise1.get_future();
+  std::thread th(doWork, std::move(promise1));
+  std::cout << "Main thread call get() for result... " << std::endl;
+  int result = future1.get();  // blocked here until promise1 is set in the new thread
+  std::cout << "Result is returned: " << result << std::endl;
+  th.join();
+  return 0;
+}
+```
+
+### async
+
+The function template `async` runs a function asynchronously (potentially in a separate thread which might be a part of a thread pool) and returns a `std::future` that will eventually hold the result of that function call.
+
+The first parameter in `std::async` is the launch policy, which controls the asynchronous behavior.
+
+|Bit|Description|
+|---|---|
+|std::launch::async|enable asynchronous evaluation (separate thread)|
+|std::launch::deferred|enable lazy evaluation|
+|std::launch::async \| std::launch::deferred|asynchronously or not, depending on the system load (default)|
+
+ If more than one flag is set, it is implementation-defined which policy is selected. For the default (both the std::launch::async and std::launch::deferred flags are set in policy), standard recommends (but doesn't require) utilizing available concurrency, and deferring any additional tasks.
+
+ ```cpp
+ #include <iostream>
+#include <cmath>
+#include <thread>
+#include <future>
+
+class Worker
+{
+public:
+  Worker(int min, int max) : mMin(min), mMax(max) {}  // ①
+  double work()
+  {  //
+    mResult = 0;
+    for (int i = mMin; i <= mMax; i++) {
+      mResult += std::sqrt(i);
+    }
+    return mResult;
+  }
+  double getResult()
+  {
+    return mResult;
+  }
+
+private:
+  int mMin;
+  int mMax;
+  double mResult;
+};
+
+int main()
+{
+  Worker w(0, 10e8);
+  std::cout << "Task in class triggered" << std::endl;
+  auto f3 = std::async(std::launch::async, &Worker::work, &w);  //
+  f3.wait();
+  std::cout << "Task in class finish, result: " << w.getResult() << std::endl << std::endl;
+
+  return 0;
+}
+```
+
+!!! attention
+    Note that a pointer to the object `&w` is passed. If you do not write `&` a temporary copy of the object `w` will be passed in.
+
+### packaged_task
+
+The class template `std::packaged_task` wraps any Callable target (function, lambda expression, bind expression, or another function object) so that it can be invoked asynchronously. Its return value or exception thrown is stored in a shared state which can be accessed through `std::future` objects.
+
+```cpp
+#include <iostream>
+#include <cmath>
+#include <thread>
+#include <future>
+#include <functional>
+
+// unique function to avoid disambiguating the std::pow overload set
+int f(int x, int y) { return std::pow(x,y); }
+
+void task_lambda()
+{
+  std::packaged_task<int(int,int)> task([](int a, int b) {
+      return std::pow(a, b);
+  });
+  std::future<int> result = task.get_future();
+
+  task(2, 9);
+
+  std::cout << "task_lambda:\t" << result.get() << '\n';
+}
+
+void task_bind()
+{
+  std::packaged_task<int()> task(std::bind(f, 2, 11));
+  std::future<int> result = task.get_future();
+
+  task();
+
+  std::cout << "task_bind:\t" << result.get() << '\n';
+}
+
+void task_thread()
+{
+  std::packaged_task<int(int,int)> task(f);
+  std::future<int> result = task.get_future();
+
+  std::thread task_td(std::move(task), 2, 10);
+  task_td.join();
+
+  std::cout << "task_thread:\t" << result.get() << '\n';
+}
+
+int main()
+{
+  task_lambda();
+  task_bind();
+  task_thread();
+}
+```
+
+```cpp
+#include <iostream>
+#include <cmath>
+#include <thread>
+#include <future>
+#include <vector>
+
+using namespace std;
+
+static const int MAX = 10e8;
+
+double concurrent_worker(int min, int max)
+{
+  double sum = 0;
+  for (int i = min; i <= max; i++) {
+    sum += sqrt(i);
+  }
+  return sum;
+}
+
+double concurrent_task(int min, int max)
+{
+  vector<future<double>> results;  // future list to store results
+
+  unsigned concurrent_count = thread::hardware_concurrency();
+  min = 0;
+  for (int i = 0; i < concurrent_count; i++) {
+    packaged_task<double(int, int)> task(concurrent_worker);  // package task
+    results.push_back(task.get_future());                     // store associated future objects
+
+    int range = max / concurrent_count * (i + 1);
+    thread t(std::move(task), min, range);  // launch new thread
+    t.detach();
+
+    min = range + 1;
+  }
+
+  cout << "threads create finish" << endl;
+  double sum = 0;
+  for (auto& r : results) {
+    sum += r.get();  // add results up
+  }
+  return sum;
+}
+
+int main()
+{
+  auto start_time = chrono::steady_clock::now();
+  double r = concurrent_task(0, MAX);
+  auto end_time = chrono::steady_clock::now();
+  auto ms = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
+  cout << "Concurrent task finish, " << ms << " ms consumed, Result: " << r << endl;
+  return 0;
+}
+```
+
+In real projects, you can package tasks into queues with the help of `packaged_task` and then schedule them by means of thread pools.
+
+![task queue](https://paul-pub.oss-cn-beijing.aliyuncs.com/2019/2019-11-26-cpp-concurrency/Thread_pool.svg)
+
+A `packaged_task` won't start on it's own, you have to invoke it. On the other hand, `std::async` with `launch::async` will try to run the task in a different thread.
+By using `std::async` you cannot run your task on a specific thread anymore, where `std::packaged_task` can be moved to other threads.
+
+In the end a `std::packaged_task` is just a lower level feature for implementing `std::async` (which is why it can do more than `std::async` if used together with other lower level stuff, like `std::thread`). Simply spoken a `std::packaged_task` is a `std::function` linked to a `std::future` and `std::async` wraps and calls a `std::packaged_task` (possibly in a different thread).
+
+!!!tldr
+Use `std::async` if you want some things done and don't really care when they're done, and `std::packaged_task` if you want to wrap up things in order to move them to other threads or call them later.
 
 ## Parallel STL
 
