@@ -3,7 +3,7 @@ title: Multithreading and Concurrency in C++
 description:
 comments: true
 tags:
-  - c++
+  - C++
 ---
 
 Multithreading is a feature that allows concurrent execution of two or more parts of a program for maximum utilization of the CPU.
