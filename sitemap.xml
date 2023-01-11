@@ -46,6 +46,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://leonhartyao.github.io/til/where_include/</loc>
+         <lastmod>2023-01-11</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://leonhartyao.github.io/til/yaml_string/</loc>
          <lastmod>2023-01-11</lastmod>
          <changefreq>daily</changefreq>
