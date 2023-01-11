@@ -800,8 +800,8 @@ The first parameter in `std::async` is the launch policy, which controls the asy
 
  If more than one flag is set, it is implementation-defined which policy is selected. For the default (both the std::launch::async and std::launch::deferred flags are set in policy), standard recommends (but doesn't require) utilizing available concurrency, and deferring any additional tasks.
 
- ```cpp
- #include <iostream>
+```cpp
+#include <iostream>
 #include <cmath>
 #include <thread>
 #include <future>
@@ -964,8 +964,8 @@ By using `std::async` you cannot run your task on a specific thread anymore, whe
 
 In the end a `std::packaged_task` is just a lower level feature for implementing `std::async` (which is why it can do more than `std::async` if used together with other lower level stuff, like `std::thread`). Simply spoken a `std::packaged_task` is a `std::function` linked to a `std::future` and `std::async` wraps and calls a `std::packaged_task` (possibly in a different thread).
 
-!!!tldr
-Use `std::async` if you want some things done and don't really care when they're done, and `std::packaged_task` if you want to wrap up things in order to move them to other threads or call them later.
+!!! tldr
+    Use `std::async` if you want some things done and don't really care when they're done, and `std::packaged_task` if you want to wrap up things in order to move them to other threads or call them later.
 
 ## Parallel STL
 
