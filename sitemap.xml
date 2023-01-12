@@ -51,6 +51,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://leonhartyao.github.io/til/nodiscard/</loc>
+         <lastmod>2023-01-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://leonhartyao.github.io/til/where_include/</loc>
          <lastmod>2023-01-12</lastmod>
          <changefreq>daily</changefreq>
