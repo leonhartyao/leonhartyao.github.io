@@ -56,6 +56,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://leonhartyao.github.io/til/using_namespace_hpp/</loc>
+         <lastmod>2023-01-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://leonhartyao.github.io/til/where_include/</loc>
          <lastmod>2023-01-13</lastmod>
          <changefreq>daily</changefreq>
