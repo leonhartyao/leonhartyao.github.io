@@ -1,5 +1,5 @@
 ---
-title: "[TIL] Never `using namespace` in Header Files"
+title: "[TIL] Never use using namespace in Header Files"
 description:
 comments: true
 tags:
