@@ -1,5 +1,5 @@
 ---
-title: "[TIL] Attibute: nodiscard since C++17"
+title: "[TIL] Attribute: nodiscard since C++17"
 description:
 comments: true
 tags:
