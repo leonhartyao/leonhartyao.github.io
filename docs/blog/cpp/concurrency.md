@@ -1,6 +1,6 @@
 ---
 title: Multithreading and Concurrency in C++
-description:
+description: Multithreading support was introduced in C+11 which is a feature that allows concurrent execution of two or more parts of a program for maximum utilization of the CPU.
 comments: true
 tags:
   - C++

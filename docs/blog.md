@@ -1,7 +1,7 @@
 ---
-title: Blogs
-description: Blogs sorted from new to old.
 exclude_from_blog: true
 ---
+
+# Blogs
 
 {{ blog_content }}

@@ -1,7 +1,7 @@
 ---
-title: Today I Learned
-description: Short learning notes.
 exclude_from_blog: true
 ---
+
+# Today I Learned
 
 {{ blog_content TIL}}

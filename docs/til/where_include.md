@@ -1,10 +1,12 @@
 ---
-title: "[TIL] Put include in .hpp or .cpp"
+# title: "[TIL] Put include in .hpp or .cpp"
 description:
 comments: true
 tags:
   - C++
 ---
+
+# Put include in .hpp or .cpp
 
 In general, you should only include headers in .hpp files that are needed by those headers. 
 Otherwise, always include headers only in .cpp files. This keeps compilation time to a minimum and better shows what files are needed.

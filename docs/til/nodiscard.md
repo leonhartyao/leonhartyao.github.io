@@ -1,19 +1,21 @@
 ---
-title: "[TIL] Attribute: nodiscard since C++17"
+# title: "[TIL] Attribute: nodiscard since C++17"
 description:
 comments: true
 tags:
   - C++
 ---
 
+# Attribute: nodiscard since C++17
+
 `nodiscard` is a attribute introduced by c++17.
 If a function
 
- - declared nodiscard **or**
- - returning an enumeration or class declared nodiscard by value 
- 
+- declared nodiscard **or**
+- returning an enumeration or class declared nodiscard by value
+
  the compiler will issue a warning when the function is called from a _discarded-value_ expression other than a cast to void.
- 
+
 Here is a example:
 
 ```cpp

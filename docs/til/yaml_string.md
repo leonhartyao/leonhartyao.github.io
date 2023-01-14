@@ -1,10 +1,12 @@
 ---
-title: "[TIL] How to Escape Characters in YAML Front Matter"
+# title: "[TIL] How to Escape Characters in YAML Front Matter"
 description:
 comments: true
 tags:
   - MkDocs
 ---
+
+# How to Escape Characters in YAML Front Matter
 
 To escape characters in YAML front matter, add a `>` (greater than) symbol and put the line containing the character on a new line.
 
