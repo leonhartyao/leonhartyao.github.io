@@ -168,7 +168,7 @@ int main()
   std::vector<std::thread> threadPool;
   for (int i = 1; i <= 9; ++i)
   {
-    threads.push_back(std::thread(worker, &flag));
+    threadPool.push_back(std::thread(worker, &flag));
   }
   for (auto& t : threadPool)
   {
