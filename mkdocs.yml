@@ -154,4 +154,10 @@ nav:
   # - Controllers:
   - TIL: til.md
   - Tags: tag.md
-  - Projects: projects.md
+  - Projects:
+    - projects/index.md
+    - FLYPULATOR: projects/flypulator.md
+    - T-RoX: projects/t-rox.md
+    - IRPN: projects/irpn.md
+    - KLPA: projects/klpa.md
+    - NUSICR: projects/freescale.md
