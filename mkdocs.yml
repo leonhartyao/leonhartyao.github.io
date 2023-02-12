@@ -76,6 +76,8 @@ extra:
       link: https://www.linkedin.com/in/dr-ing-chao-y-88032bba/
     - icon: fontawesome/brands/github
       link: https://github.com/leonhartyao
+    - icon: fontawesome/brands/gitlab
+      link: https://gitlab.com/chaolmu
     - icon: fontawesome/brands/orcid
       link: https://orcid.org/0000-0001-8599-112X
   generator: false
@@ -159,5 +161,5 @@ nav:
     - FLYPULATOR: projects/flypulator.md
     - T-RoX: projects/t-rox.md
     - IRPN: projects/irpn.md
-    - KLPA: projects/klpa.md
+    - SLPD: projects/klpa.md
     - NUSICR: projects/freescale.md
