@@ -11,7 +11,7 @@
 
 ## Experience
 
-- Software Developer @B/S/H/
+- Robotic Software Developer @B/S/H/
 - Research & Teaching Assistent @TU Dresden
 - Intern @Continental
 
