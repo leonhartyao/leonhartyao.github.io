@@ -6,7 +6,7 @@ tags:
 
 # Search Git Log by Message
 
-To find commit by message, I add a alias in `~/.gitconfig`:
+To find commit by message, I add an alias in `~/.gitconfig`:
 
 ```bash
 [alias]
