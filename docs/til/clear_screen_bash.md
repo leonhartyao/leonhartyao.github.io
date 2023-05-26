@@ -3,7 +3,7 @@
 description:
 comments: true
 tags:
-  - bash
+  - Bash
 ---
 
 # Clear Screen in bash
