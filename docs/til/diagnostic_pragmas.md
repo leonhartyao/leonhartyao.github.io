@@ -8,12 +8,12 @@ tags:
 # GCC Diagnostic Pragma
 
 GCC allows the user to selectively enable or disable certain types of diagnostics, and change the kind of the diagnostic.
-For example, diagnostics might be enabled selectively to treat them as errors depending on which preprocessor macros are defined. 
+For example, diagnostics might be enabled selectively to treat them as errors depending on which preprocessor macros are defined.
 
 Here is a example:
 
 ```cpp
-// remember current state of the diagnostic 
+// remember current state of the diagnostic
 #pragma GCC diagnostic push
 
 // no diagnostic for return
@@ -24,7 +24,7 @@ int func1()
   return;
 }
 
-// restore pushed state of the diagnostic 
+// restore pushed state of the diagnostic
 #pragma GCC diagnostic push
 
 int func2()

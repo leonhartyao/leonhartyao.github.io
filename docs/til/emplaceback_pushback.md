@@ -8,7 +8,7 @@ tags:
 
 # emplace_back VS push_back
 
-Clang-tidy suggests often to use`emplace_back` instead of `push_back`.
+Clang-tidy suggests often to use `emplace_back` instead of `push_back`.
 Why is `emplace_back` recommended and what is pros and cons of it?
 
 **push_back**
