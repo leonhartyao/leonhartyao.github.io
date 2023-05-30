@@ -3,7 +3,7 @@
 description:
 comments: true
 tags:
-  - Bash
+  - Linux
 ---
 
 # Show Key Presses on Screen
