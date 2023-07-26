@@ -12,14 +12,19 @@ Relative chaser-target state estimates are provided by specific image recognitio
 
 <figure markdown>
   ![IRPN structure](https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2018/04/irpn6_structure_of_the_irpn_system/17459963-1-eng-GB/IRPN6_Structure_of_the_IRPN_system_pillars.jpg){ width="600" }
-  <figcaption>Structure of the IRPN system [copyright2 ESA]</figcaption>
+  <figcaption>Structure of the IRPN system [copyright ESA]</figcaption>
 </figure>
+
+Video1: Image-based rendezvous navigation - approaching the target satellite ENVISAT [copyright IfA, TUD]
+<iframe src="https://videocampus.sachsen.de/media/embed?key=52653b637ee259a0269218003542f92c" width="720" height="540" allowfullscreen></iframe>
+
+Video2: Image-based rendezvous navigation - VIS camera only / estimated pose = grid overlay [copyright IfA, TUD]:
+<iframe src="https://videocampus.sachsen.de/media/embed?key=2edf02a5399af135651eb3dee3d7887a" width="720" height="400" allowfullscreen></iframe>
 
 ## Contributions
 
 An edge-based pose estimation algorithm is developed for known target satellites as my diploma thesis. The algorithm is base on mono-camera and was evaluated as part of the IPR system.
-This system is able to estimate the full 6D pose of the considered target object relative to the camera coordinates. It is assumed that a fixed 3D CAD model is available
-for pre-generating synthetic templates.
+This system is able to estimate the full 6D pose of the considered target object relative to the camera coordinates. It is assumed that a fixed 3D CAD model is available for pre-generating synthetic templates.
 
 <figure markdown>
   ![Principle](../assets/images/irp.png){ width="600" }

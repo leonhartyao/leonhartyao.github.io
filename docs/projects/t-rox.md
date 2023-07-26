@@ -42,6 +42,9 @@ This common, open teaching platform is being developed to demonstrate the benefi
   <figcaption>Inverse kinematics<f/igcaption>
 </figure>
 
+Video: youBot SLAM Demo
+<iframe src="https://videocampus.sachsen.de/media/embed?key=e9dee621a84c49c4bf81c979525ff77c" width="720" height="400" title="youBot SLAM Demo" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
 <figure markdown>
   ![fk](../assets/images/output.jpg){ width="500" }
   <figcaption>Booth at OUTPUT<f/igcaption>

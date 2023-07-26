@@ -27,16 +27,24 @@ One of the lastest results was presented by Shuster et al. at IROS 2022 (see the
   <figcaption>Design of the aerial manipulator</figcaption>
 </figure>
 
-<figure markdown>
+Video: Omnidirectional UAV Demo
+<iframe src="https://videocampus.sachsen.de/media/embed?key=418b2f71881b1fe48977a5f8cee0f02a" width="720" height="400" title="Omnidirectional UAV Demo" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+Video: Aerial Manipulator Flying Demo
+<iframe src="https://videocampus.sachsen.de/media/embed?key=200930f51ee221d5c920c819827c9eb6" width="720" height="400" title="Aerial Manipulator Flying Demo" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+<!-- <figure markdown>
   ![vio-hohe-str](../assets/images/vins-stereo-hohe-str.gif){ width="500" }
 </figure>
 <figure markdown>
   ![vio-hohe-str](../assets/images/google-map-vins.png){ width="500" }
   <figcaption>Outdoor demo of VINS-Stereo</figcaption>
-</figure>
-<!-- <img src="../../assets/images/vins-stereo-hohe-str.gif"  width="600">
-<img src="../../assets/images/google-map-vins.png"  width="600"> -->
+</figure> -->
 
- Video: [Youtube](https://www.youtube.com/watch?v=XW3dV7o6F24&t=39s)
+Video: VINS-Stereo Test in Campus Building BAR
+<iframe src="https://videocampus.sachsen.de/media/embed?key=efa9785a9ae709a16b00ef891c2ccf9d" width="720" height="400" title="VINS-Stereo BAR test" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+Video: VINS-Stereo Outdoor Test
+<iframe src="https://videocampus.sachsen.de/media/embed?key=12a677023514f47eccdde2d47f10641e" width="720" height="400" title="VINS-Stereo outdoor test" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 [^1]: https://tu-dresden.de/ing/maschinenwesen/ifkm/dmt/forschung/projekte/Flypulator
