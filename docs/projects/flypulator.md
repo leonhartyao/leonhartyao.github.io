@@ -47,4 +47,6 @@ Video: VINS-Stereo Test in Campus Building BAR
 Video: VINS-Stereo Outdoor Test
 <iframe src="https://videocampus.sachsen.de/media/embed?key=12a677023514f47eccdde2d47f10641e" width="720" height="400" title="VINS-Stereo outdoor test" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
+Prototype with fixed rotors: [IROS video](https://www.youtube.com/watch?v=jGJbtuPdbJg)
+
 [^1]: https://tu-dresden.de/ing/maschinenwesen/ifkm/dmt/forschung/projekte/Flypulator
