@@ -6,6 +6,8 @@ on:
       - main
 permissions:
   contents: write
+env:
+  LANG: "en_US.UTF-8"
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -26,4 +28,8 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material mkdocs-minify-plugin mkdocs-blogging-plugin mkdocs-glightbox
-      - run: mkdocs gh-deploy --force
+      - name: Build pages
+        run: |
+          sudo locale-gen en_US.UTF-8
+          sudo update-locale LANG=en_US.UTF-8
+          mkdocs gh-deploy --force
