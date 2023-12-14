@@ -1,0 +1,94 @@
+<mxfile host="65bd71144e">
+    <diagram id="kgpKYQtTHZ0yAKxKKP6v" name="Page-1">
+        <mxGraphModel dx="582" dy="569" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="3nuBFxr9cyL0pnOWT2aG-1" value="Thread 1" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;rounded=0;shadow=0;strokeWidth=1;fontSize=22;labelBackgroundColor=none;strokeColor=#1BA1E2;fontColor=#1BA1E2;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="80" width="157.14285714285714" height="430" as="geometry"/>
+                </mxCell>
+                <mxCell id="Hv0vjv1dd4RzIaSErp61-3" value="&lt;font style=&quot;font-size: 14px&quot;&gt;create promise&lt;br style=&quot;font-size: 14px;&quot;&gt;object&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=0.5;entryY=0.233;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=14;labelBackgroundColor=none;strokeColor=#1BA1E2;fontColor=#1BA1E2;" parent="3nuBFxr9cyL0pnOWT2aG-1" target="3nuBFxr9cyL0pnOWT2aG-1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="78.57142857142857" y="67.1875" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="125.71428571428571" y="67.1875"/>
+                            <mxPoint x="125.71428571428571" y="94.0625"/>
+                        </Array>
+                        <mxPoint x="86.4285714285716" y="94.0625" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Hv0vjv1dd4RzIaSErp61-5" value="&lt;font style=&quot;font-size: 14px&quot;&gt;fetch future obj&lt;br style=&quot;font-size: 14px;&quot;&gt;from promise&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=0.5;entryY=0.4;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=14;labelBackgroundColor=none;strokeColor=#1BA1E2;fontColor=#1BA1E2;" parent="3nuBFxr9cyL0pnOWT2aG-1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="78.57142857142857" y="112.875" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="125.71428571428571" y="112.875"/>
+                            <mxPoint x="125.71428571428571" y="139.75"/>
+                        </Array>
+                        <mxPoint x="78.57142857142857" y="139.74999999999991" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Hv0vjv1dd4RzIaSErp61-9" value="&lt;font style=&quot;font-size: 14px&quot;&gt;call future.get()&lt;br style=&quot;font-size: 14px;&quot;&gt;and get blocked&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=0.5;entryY=0.867;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=14;labelBackgroundColor=none;strokeColor=#1BA1E2;fontColor=#1BA1E2;" parent="3nuBFxr9cyL0pnOWT2aG-1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="78.57142857142857" y="268.75" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="125.71428571428571" y="268.75"/>
+                            <mxPoint x="125.71428571428571" y="295.625"/>
+                        </Array>
+                        <mxPoint x="78.57142857142857" y="295.75937500000003" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Hv0vjv1dd4RzIaSErp61-12" value="&lt;font style=&quot;font-size: 14px&quot;&gt;do some work&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=0.464;entryY=0.048;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=14;labelBackgroundColor=none;strokeColor=#1BA1E2;fontColor=#1BA1E2;" parent="3nuBFxr9cyL0pnOWT2aG-1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="78.57142857142857" y="215" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="125.71428571428571" y="215"/>
+                            <mxPoint x="125.71428571428571" y="241.875"/>
+                            <mxPoint x="78.57142857142857" y="241.875"/>
+                        </Array>
+                        <mxPoint x="78.00571428571445" y="243.16499999999996" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3nuBFxr9cyL0pnOWT2aG-5" value="Thread 2" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=0;collapsible=0;recursiveResize=0;rounded=0;shadow=0;strokeWidth=1;fontSize=22;labelBackgroundColor=none;strokeColor=#1BA1E2;fontColor=#1BA1E2;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="402.85714285714283" y="80" width="157.14285714285714" height="430" as="geometry"/>
+                </mxCell>
+                <mxCell id="3nuBFxr9cyL0pnOWT2aG-8" value="create thread2 and&#10;pass promise object" style="verticalAlign=bottom;endArrow=block;shadow=0;strokeWidth=1;exitX=0.507;exitY=0.557;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.495;entryY=0.557;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=14;labelBackgroundColor=none;strokeColor=#1BA1E2;fontColor=#1BA1E2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="199.67142857142863" y="272.290625" as="sourcePoint"/>
+                        <mxPoint x="480.6428571428571" y="272.290625" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Hv0vjv1dd4RzIaSErp61-14" value="get() returns the&lt;br style=&quot;font-size: 14px;&quot;&gt;value from promise" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=0.5;entryY=0.867;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=14;labelBackgroundColor=none;strokeColor=#1BA1E2;fontColor=#1BA1E2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="198.57142857142856" y="415.9375" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="245.71428571428572" y="415.9375"/>
+                            <mxPoint x="245.71428571428572" y="442.8125"/>
+                        </Array>
+                        <mxPoint x="198.57142857142856" y="442.94687500000003" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Hv0vjv1dd4RzIaSErp61-15" value="continue work" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;entryX=0.5;entryY=0.867;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=14;labelBackgroundColor=none;strokeColor=#1BA1E2;fontColor=#1BA1E2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="198.57142857142856" y="456.10218749999996" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="245.71428571428572" y="456.10218749999996"/>
+                            <mxPoint x="245.71428571428572" y="482.97718749999996"/>
+                        </Array>
+                        <mxPoint x="198.57142857142856" y="483.1115625" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="Hv0vjv1dd4RzIaSErp61-11" value="set value in passed promise" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;fontSize=14;labelBackgroundColor=none;strokeColor=#1BA1E2;fontColor=#1BA1E2;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="481.4285714285714" y="382.34375" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="481.4285714285714" y="382.34375"/>
+                            <mxPoint x="528.5714285714286" y="382.34375"/>
+                            <mxPoint x="528.5714285714286" y="409.21875"/>
+                        </Array>
+                        <mxPoint x="481.4285714285714" y="409.21875" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
