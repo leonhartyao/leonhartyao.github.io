@@ -85,13 +85,14 @@ extra:
 # Plugins
 plugins:
   - search
-  # - git-revision-date-localized:
-  #     type: date
+  - git-revision-date-localized:
+      type: date
   - tags:
       tags_file: tag.md
   - minify:
       minify_html: true
   - blogging:
+      locale: en
       dirs: # The directories to be included
         - blog
       categories:

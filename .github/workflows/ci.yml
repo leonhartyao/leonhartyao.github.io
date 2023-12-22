@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
@@ -27,9 +29,6 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material mkdocs-minify-plugin mkdocs-blogging-plugin mkdocs-glightbox
+      - run: pip install mkdocs-material mkdocs-minify-plugin mkdocs-blogging-plugin mkdocs-glightbox mkdocs-git-revision-date-localized-plugin
       - name: Build pages
-        run: |
-          sudo locale-gen en_US.UTF-8
-          sudo update-locale LANG=en_US.UTF-8
-          mkdocs gh-deploy --force
+        run: mkdocs gh-deploy --force
