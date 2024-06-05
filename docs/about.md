@@ -11,7 +11,8 @@
 
 ## Experience
 
-- Robotic Software Developer since 2022 @B/S/H/
+- Senior Robotics Software Engineer since 2024 @TII
+- Robotic Software Developer 2022-2024 @B/S/H/
 - Specialist Software Engineering Autonomous Drive 2021 @BMW
 - Research & Teaching Assistent 2015-2021 @TU Dresden
 - Intern 2014 @Continental
