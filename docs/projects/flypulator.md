@@ -28,10 +28,10 @@ One of the lastest results was presented by Shuster et al. at IROS 2022 (see the
 </figure>
 
 Video: Omnidirectional UAV Demo
-<iframe src="https://videocampus.sachsen.de/media/embed?key=418b2f71881b1fe48977a5f8cee0f02a" width="720" height="400" title="Omnidirectional UAV Demo" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe src="https://drive.google.com/file/d/1jubGSoYha0RpJtPnXp44NTNckSLW4fiN/preview" width="720" height="400" title="Omnidirectional UAV Demo" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 Video: Aerial Manipulator Flying Demo
-<iframe src="https://videocampus.sachsen.de/media/embed?key=200930f51ee221d5c920c819827c9eb6" width="720" height="400" title="Aerial Manipulator Flying Demo" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe src="https://drive.google.com/file/d/1wuZM_G9ex7ERqDk3bxzq64dWEfMcrA1C/preview" width="720" height="400" title="Aerial Manipulator Flying Demo" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 
 <!-- <figure markdown>
   ![vio-hohe-str](../assets/images/vins-stereo-hohe-str.gif){ width="500" }
@@ -42,10 +42,10 @@ Video: Aerial Manipulator Flying Demo
 </figure> -->
 
 Video: VINS-Stereo Test in Campus Building BAR
-<iframe src="https://videocampus.sachsen.de/media/embed?key=efa9785a9ae709a16b00ef891c2ccf9d" width="720" height="400" title="VINS-Stereo BAR test" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe src="https://www.youtube.com/embed/N9uGDChic7w?si=BGB4UXbFhqRzp1GO" width="720" height="400" title="VINS-Stereo BAR test" frameborder="0" allowfullscreen></iframe>
 
 Video: VINS-Stereo Outdoor Test
-<iframe src="https://videocampus.sachsen.de/media/embed?key=12a677023514f47eccdde2d47f10641e" width="720" height="400" title="VINS-Stereo outdoor test" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+<iframe src="https://www.youtube.com/embed/XW3dV7o6F24?si=BUWttyHJnmWm1Osc" width="720" height="400" title="VINS-Stereo outdoor test" frameborder="0" allowfullscreen></iframe>
 
 Prototype with fixed rotors: [IROS video](https://www.youtube.com/watch?v=jGJbtuPdbJg)
 
