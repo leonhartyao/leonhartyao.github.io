@@ -90,6 +90,7 @@ Create a bare clone of the repository
 
 ```bash
 git clone --bare https://<old_repository>.git
+```
 
 Pull in the repository’s Git Large File Storage objects
 
