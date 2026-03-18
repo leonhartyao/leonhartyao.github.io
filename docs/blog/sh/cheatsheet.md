@@ -1,6 +1,6 @@
 ---
-title: Bash File Test Operators
-description: Checking if a specific file or folder is very useful in shell scripts.
+title: Vim, Tmux, VS Code and Vimium Cheatsheet
+description: Quick reference for keyboard shortcuts and commands in Vim, Tmux, VS Code, and Vimium.
 comments: true
 tags:
   - vim
