@@ -2,7 +2,7 @@
 
 :fontawesome-solid-envelope: chao.yao@mail.de
 
-[:fontawesome-solid-file-pdf: Download CV](assets/CV_Chao_Yao.pdf){ .md-button .md-button--primary }
+[Download CV](assets/CV_Chao_Yao.pdf)
 
 ## Education
 
