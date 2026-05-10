@@ -27,7 +27,6 @@ tags:
 | ----------------- | --------------------- | ------- | --------------------- | ------- | ----------------------- |
 | **u**             | undo                  | **^r**  | redo                  | **.**   | repeat last editing cmd |
 | **i I**           | insert text           | **a A** | append text           | **o O** | Open new line           |
-| **i I**           | insert text           | **a A** | append text           | **o O** | Open new line           |
 | **c<navigation>** | change text of motion | **C**   | change to end of line | **cc**  | change whole line       |
 | **d<navigation>** | delete text of motion | **D**   | delete to end of line | **dd**  | delete(cut) whole line  |
 | **y**             | copy                  | **yy**  | copy line             | **p P** | paste                   |
@@ -74,4 +73,12 @@ tags:
 
 ## vimium
 
-## Dev-tookit
+| Command | Description       | Command | Description   | Command | Description         | Command  | Description       |
+| ------- | ----------------- | ------- | ------------- | ------- | ----------------- | -------- | ------------------- |
+| **h**   | left              | **j**   | down          | **k**   | up                | **l**    | right               |
+| **d**   | half page down    | **u**   | half page up  | **H**   | back in history   | **L**    | forward in history  |
+| **r**   | reload page       | **yy**  | copy url      | **p P** | open copied url   | **f F**  | open link           |
+| **o O** | open Vomnibar     | **b B** | open book mark| **T**   | search opened tab | **ge gE**| edit url            |
+| **/**   | search on page    | **n**   | search forward| **N**   | search backward   | **gi**   | focus 1st text input|
+| **t**   | new tab           | **gT**  | left tab      | **gt**  | right tab         | **g0 g$**| first/last tab      |
+| **yt**  | duplicate tab     | **x**   | close tab      | **X**  | Restore closed tab| **?**    | help                |
