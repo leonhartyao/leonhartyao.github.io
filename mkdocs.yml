@@ -159,6 +159,9 @@ nav:
   - Tags: tag.md
   - Projects:
     - projects/index.md
+    - Quay Crane Inspection Drone: projects/dpworld.md
+    - Aerial RFID Scanning for Warehouses: projects/warehouse.md
+    - Homecare Robot: projects/bcr2.md
     - FLYPULATOR: projects/flypulator.md
     - T-RoX: projects/t-rox.md
     - IRPN: projects/irpn.md
