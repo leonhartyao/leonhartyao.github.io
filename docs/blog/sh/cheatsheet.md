@@ -11,45 +11,55 @@ tags:
 
 ## vim
 
-### Navigation
+### Movement
 
-| Command | Description            | Command | Description            | Command | Description            |
-| ------- | ---------------------- | ------- | ---------------------- | ------- | ---------------------- |
-| **w W** | beginning of next word | **b B** | beginning of last word | **e E** | end of current word    |
-| **0**   | line start             | **^**   | first non-whitespace   | **$**   | end of line            |
-| **{**   | previous blank line    | **}**   | next blank line        | **12G** | go to line 12          |
-| **gg**  | start of file          | **G**   | end of file            | **%**   | jump to matching brace |
-| **C-d** | down half screen       | **C-u** | up half screen         | **12G** | go to line 12          |
+| Key         | Description         | Key       | Description      |
+| ----------- | ------------------- | --------- | ---------------- |
+| **h j k l** | character/direction | **w b e** | words            |
+| **0 ^ $**   | line                | **{ }**   | paragraph        |
+| **C-d C-u** | half screen         | **gg G**  | file             |
+| **f t**     | character in line   | **\%**    | matching bracket |
+| **\/**      | search              | **\***    | search word      |
+| **n**       | next match          | **N**     | previous match   |
+
+### Operators & Text Objects
+
+| Key     | Description         | Key     | Description   | Key   | Description |
+| ------  | --------------------| ------- | ------------- | ----- | ----------- |
+| **d**   | delete              | **c**   | change        | **y** | yank (copy) |
+| **iw**  | inside word         | **i"**  | inside quotes |       |             |
+| **i\(** | inside parentheses  | **i\{** | inside braces |       |             |
 
 ### Editing
 
-| Command           | Description           | Command | Description           | Command | Description             |
-| ----------------- | --------------------- | ------- | --------------------- | ------- | ----------------------- |
-| **u**             | undo                  | **^r**  | redo                  | **.**   | repeat last editing cmd |
-| **i I**           | insert text           | **a A** | append text           | **o O** | Open new line           |
-| **c<navigation>** | change text of motion | **C**   | change to end of line | **cc**  | change whole line       |
-| **d<navigation>** | delete text of motion | **D**   | delete to end of line | **dd**  | delete(cut) whole line  |
-| **y**             | copy                  | **yy**  | copy line             | **p P** | paste                   |
+| Key         | Description           | Key     | Description           | Key          | Description             |
+| ----------- | --------------------- | ------- | --------------------- | ------------ | ----------------------- |
+| **i a I A** | insert \| append text | **a A** | append text           | **o O**      | Open new line           |
+| **x**       | delete one character  | **r**   | replace one character | **~**        | toggle case             |
+| **dd**      | delete/cut line       | **yy**  | copy line             | **c**        | change line             |
+| **J**       | join lines            | **p P** | paste                 | **>> << ==** | indent block            |
+| **u**       | undo                  | **^r**  | redo                  | **.**        | repeat last editing cmd |
 
-### Blocks
 
-| Command | Description         | Command | Description                | Command | Description         |
-| ------- | ------------------- | ------- | -------------------------- | ------- | ------------------- |
-| **v**   | visual block stream | **V**   | visual block line          | **C-v** | visual block column |
-| **> <** | indent block        | **gv**  | reselect last visual block |         |                     |
+### Selection
 
-### Searching
-
-| Command | Description             | Command | Description | Command | Description    |
-| ------- | ----------------------- | ------- | ----------- | ------- | -------------- |
-| **/ ?** | search forward/backward | **n**   | next match  | **N**   | previous match |
+| Key     | Description         | Key     |  Description    | Key    | Description     |
+| ------- | ------------------- | ------- | -------------- | ------- | --------------- |
+| **v**   | character selection | **V**   | line selection | **C-v** | block selection |
 
 ### Files
 
-| Command       | Description           | Command  | Description         | Command   | Description               |
-| ------------- | --------------------- | -------- | ------------------- | --------- | ------------------------- |
-| **:w <name>** | write file            | **ZZ**   | write file and quit | **:n(!)** | new file (without saving) |
-| **:q (!)**    | quit (without saving) | **:e .** | directory explorer  |           |                           |
+| Key           | Description           | Key        | Description           | Key                   | Description               |
+| ------------- | --------------------- | ---------- | --------------------- | --------------------- | ------------------------- |
+| **:w <name>** | write file            | **:q (!)** | quit (without saving) | **:n(!)**             | new file (without saving) |
+| **:q (!)**    | quit (without saving) | **:E**     | explorer              | **:e \<path\|file\>** | edit                      |
+| **:ls**       | show buffer           | **:bn**    | next buffer           | **:bp**               | next buffer               |
+
+### Windows
+
+| Key         | Description      | Key        | Description   | Key                | Description   |
+| ----------- | ---------------- | ---------- | ------------- | ------------------ | ------------- |
+| **:vsplit** | left-right split | **:split** | up-down split | **Ctrl-w h j k l** | switch window |
 
 ## tmux
 
