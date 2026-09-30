@@ -24,11 +24,11 @@ tags:
 
 ### Operators & Text Objects
 
-| Key     | Description         | Key     | Description   | Key   | Description |
-| ------  | --------------------| ------- | ------------- | ----- | ----------- |
-| **d**   | delete              | **c**   | change        | **y** | yank (copy) |
-| **iw**  | inside word         | **i"**  | inside quotes |       |             |
-| **i\(** | inside parentheses  | **i\{** | inside braces |       |             |
+| Key     | Description         | Key     | Description              | Key     | Description   |
+| ------  | --------------------| ------- | ------------------------ | ------- | ------------- |
+| **d**   | delete              | **c**   | change                   | **y**   | yank (copy)   |
+| **iw**  | inside word         | **i"**  | inside quotes            | **i\{** | inside braces |
+| **i\(** | inside parentheses  | **"+y** | change registry and yank |         |               |
 
 ### Editing
 
