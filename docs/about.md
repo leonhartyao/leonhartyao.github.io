@@ -8,8 +8,6 @@
 
 - Dr.-Ing. 2022 Control & Robotics @[Institut of Automation][IfA], TU Dresden, Germany
 - Dipl.-Ing. 2015 Electrical Engineering @TU Dresden, Germany
-- B.Sc. 2010 Automation @WUST, China
-- B.B.A. 2010 Business Administration @WUST, China
 
 ## Experience
 
@@ -52,6 +50,7 @@ agile development, commercial software development process
 
 ## Publications
 
+- Godio, S., Costa Fernandes, R., Ashour, R. et al. Scalable Multi-Camera VIO with Bounded Sliding-Window Optimization. J Intell Robot Syst (2026). https://doi.org/10.1007/s10846-026-02434-5
 - Yao, Chao. “A Contribution to the Design of Highly Redundant Compliant Aerial Manipulation Systems,” Vogt Verlag, Dresden, 2022. ISBN:978-3-95947-056-8.
 - Shawky, David, Chao Yao, and Klaus Janschek. “Nonlinear Model Predictive Control for Trajectory Tracking of a Hexarotor with Actively Tiltable Propellers.” In 2021 7th International Conference on Advanced Intelligent Systems and Informatics (AISI), 316–27. Cairo Egypt: Springer International Publishing, 2022. https://doi.org/10.1007/978-3-030-93479-8_29.
 - Yao, Chao, and Klaus Janschek. “Impedance Control of an Aerial Manipulator Composed of a Multirotor and a 6-DOF Manipulator,” VDI Mechatronik 2021, 2021.
