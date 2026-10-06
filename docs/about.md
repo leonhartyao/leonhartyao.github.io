@@ -2,8 +2,6 @@
 
 :fontawesome-solid-envelope: chao.yao@mail.de
 
-[Download CV](assets/CV_Chao_Yao.pdf)
-
 ## Education
 
 - Dr.-Ing. 2022 Control & Robotics @[Institut of Automation][IfA], TU Dresden, Germany
