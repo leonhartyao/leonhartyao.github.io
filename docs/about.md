@@ -6,6 +6,10 @@
 
 - Dr.-Ing. 2022 Control & Robotics @[Institut of Automation][IfA], TU Dresden, Germany
 - Dipl.-Ing. 2015 Electrical Engineering @TU Dresden, Germany
+<!--
+- B.Sc. 2010 Automation @WUST, China
+- B.B.A. 2010 Business Administration @WUST, China
+-->
 
 ## Experience
 
