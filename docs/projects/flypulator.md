@@ -42,10 +42,10 @@ Video: Aerial Manipulator Flying Demo
 </figure> -->
 
 Video: VINS-Stereo Test in Campus Building BAR
-<iframe src="https://drive.google.com/file/d/1Jat76KP_WUQmo4InyeZNvqxukPT66hXj/preview" width="720" height="400" title="VINS-Stereo BAR test" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://drive.google.com/file/d/1HvChnJmcq2kXfRA3dpFD3EuyjMw_mR9c/preview" width="720" height="400" title="VINS-Stereo BAR test" frameborder="0" allowfullscreen></iframe>
 
 Video: VINS-Stereo Outdoor Test
-<iframe src="https://drive.google.com/file/d/1nuVpVjAC32eXbK9rl3WaFKvtPyRHsysX/preview" width="720" height="400" title="VINS-Stereo outdoor test" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://drive.google.com/file/d/1_BIiDoQOYF2d558QaTv7kOYovn8VuPJx/preview" width="720" height="400" title="VINS-Stereo outdoor test" frameborder="0" allowfullscreen></iframe>
 
 Prototype with fixed rotors: [IROS video](https://www.youtube.com/watch?v=jGJbtuPdbJg)
 
