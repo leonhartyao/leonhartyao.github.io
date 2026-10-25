@@ -166,6 +166,4 @@ nav:
     - T-RoX: projects/t-rox.md
     - IRPN: projects/irpn.md
     - SLPD: projects/klpa.md
-    <!--
-    - NUSICR: projects/freescale.md
-    -->
+    # - NUSICR: projects/freescale.md
